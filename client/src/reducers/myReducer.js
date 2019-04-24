@@ -1,5 +1,5 @@
 const initialState = {
-  peoples: [],
+  person: {},
   invited: [],
   notinvited: [],
 }
@@ -18,7 +18,7 @@ export default function myReducer(state = initialState, action) {
       }
     case 'GET_PEOPLES':
       return {...state,
-        peoples: action.peoples,
+        person: action.person,
       }
     default:
       return state

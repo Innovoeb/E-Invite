@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/invited', (req, res, next) => {
-  res.send('sending list of people invited')
+  res.json(invited)
 });
 
 router.get('/not-invited', (req, res, next) => {
@@ -18,8 +18,11 @@ router.get('/not-invited', (req, res, next) => {
 })
 
 router.post('/invited', (req, res, next) => {
-  console.log(req.params)
-  res.json(req.params)
+  invited.push(req.body)
+  console.log(invited)
+  res.json({
+    message: 'success'
+  })
 })
 
 router.post('/not-invited', (req, res, next) => {

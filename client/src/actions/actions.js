@@ -6,9 +6,16 @@ import axios from 'axios'
 export function myPeoples() {
   axios.get('https://randomuser.me/api/').then(resp => {
     console.log(resp.data.results);
+    const person = resp.data.results[0]
     store.dispatch({
       type: 'GET_PEOPLES',
-      peoples: resp.data.results
+      person: {
+        fname: person.name.first,
+        lname: person.name.last,
+        phone: person.phone,
+        email: person.email,
+        picture: person.picture.large
+      }
     })
   })
 }

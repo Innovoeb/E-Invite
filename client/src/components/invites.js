@@ -12,21 +12,23 @@ class Invites extends Component {
 
   addInvite = (e) => {
     e.preventDefault()
-    addInvite(this.props.peoples[0].name.first)
+    addInvite({
+      picture: this.props.picture,
+      fname: this.props.fname,
+      email: this.props.email
+    })
   }
 
   render() {
     return (
       <div>
-      {this.props.peoples.map(person => (
         <div>
-          <img src={person.picture.large} />
-          <h1>{person.name.first}</h1>
-          <p>{person.email}</p>
+          <img src={this.props.picture} />
+          <h1>{this.props.fname}</h1>
+          <p>{this.props.email}</p>
           <button onClick={this.addInvite}>Invite</button>
           <button>Sucka! DON'T INVITE!</button>
         </div>
-      ))}
 
       </div>
     )
@@ -36,9 +38,8 @@ class Invites extends Component {
 // function that maps the application state to props
 function mapStateToProps(appState) {
   return {
-    peoples: appState.peoples,
+    ...appState.person,
     invited: appState.invited,
-
   }
 }
 
